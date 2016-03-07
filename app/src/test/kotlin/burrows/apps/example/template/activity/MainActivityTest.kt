@@ -1,5 +1,6 @@
 package burrows.apps.example.template.activity;
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
@@ -10,12 +11,12 @@ import org.robolectric.RobolectricGradleTestRunner
  * @since 0.0.1
  */
 @RunWith(RobolectricGradleTestRunner::class)
-public class MainActivityTest {
+class MainActivityTest {
 
     @Test
     fun testActivityShouldNotBeNull() {
         val mainActivity = Robolectric.buildActivity(MainActivity::class.java)
 
-//        Assertions.assertThat(mainActivity).isNotNull()
+        assertThat(mainActivity).isNotNull()
     }
 }
