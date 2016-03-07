@@ -1,0 +1,4 @@
+rootProject.name = 'android-gradle-kotlin-template'
+
+include ':app'
+include ':test-lib'
