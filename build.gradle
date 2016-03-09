@@ -2,7 +2,6 @@ buildscript {
     repositories {
         jcenter()
         maven { url 'https://plugins.gradle.org/m2/' } // official gradle plugins
-        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -47,9 +46,11 @@ configure(project('app')) {
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         }
 
-        sourceSets.main {
-            jni.srcDirs = []
-            jniLibs.srcDir 'src/main/libs'
+        // Shouldn't the plugin be doing this for us?
+        sourceSets {
+            androidTest.java.srcDirs += 'src/androidTest/kotlin'
+            main.java.srcDirs += 'src/main/kotlin'
+            test.java.srcDirs += 'src/test/kotlin'
         }
 
         signingConfigs.debug {
