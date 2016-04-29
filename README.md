@@ -1,4 +1,4 @@
-android-gradle-kotlin-template [![Status](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-template) [![Coverage Status](https://coveralls.io/repos/jaredsburrows/android-gradle-kotlin-template/badge.svg?branch=master)](https://coveralls.io/r/jaredsburrows/android-gradle-kotlin-template?branch=master)
+android-gradle-kotlin-app-template [![Status](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-app-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-app-template) [![Coverage Status](https://coveralls.io/repos/jaredsburrows/android-gradle-kotlin-app-template/badge.svg?branch=master)](https://coveralls.io/r/jaredsburrows/android-gradle-kotlin-app-template?branch=master)
 =========
 Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 
@@ -56,7 +56,7 @@ Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 
 ## Comand Line(Advanced):
 ##### Clone with `Git`:
- - `git clone https://github.com/jaredsburrows/android-gradle-kotlin-template.git`
+ - `git clone https://github.com/jaredsburrows/android-gradle-kotlin-app-template.git`
  - `cd AndroidGradleTemplate`
 
 ##### Installing/Running with `Gradle`:
@@ -86,7 +86,7 @@ Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 License
 =========
 
-    Copyright (C) 2016 android-gradle-kotlin-template by Jared Burrows
+    Copyright (C) 2016 android-gradle-kotlin-app-template by Jared Burrows
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
