@@ -99,7 +99,7 @@ coveralls {
 
 dependencies {
     // Kotlin
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.1-2'
 
     // Android Support Library for AppCompat
     compile 'com.android.support:appcompat-v7:23.3.0'

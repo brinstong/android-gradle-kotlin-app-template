@@ -15,7 +15,7 @@ class MainActivityTest {
 
     @Test
     fun testActivityShouldNotBeNull() {
-        val mainActivity = Robolectric.buildActivity(MainActivity::class.java)
+        val mainActivity = Robolectric.setupActivity(MainActivity::class.java)
 
         assertThat(mainActivity).isNotNull()
     }
