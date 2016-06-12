@@ -1,5 +1,8 @@
-android-gradle-kotlin-app-template [![Status](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-app-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-app-template) [![Coverage Status](https://coveralls.io/repos/jaredsburrows/android-gradle-kotlin-app-template/badge.svg?branch=master)](https://coveralls.io/r/jaredsburrows/android-gradle-kotlin-app-template?branch=master)
-=========
+# Android Gradle Kotlin App Template 
+|TravisCI(OSX)|CircleCI(Linux)|AppVeyor(Windows)|Coveralls|
+|:---:|:---:|:---:|:---:|
+|[![TravisCI](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-app-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/android-gradle-kotlin-app-template)|[![CircleCI](https://circleci.com/gh/jaredsburrows/android-gradle-kotlin-app-template.svg?style=shield)](https://circleci.com/gh/jaredsburrows/android-gradle-kotlin-app-template)|[![AppVeyor](https://ci.appveyor.com/api/projects/status/2o07ifs4cxcf0dsu/branch/master?svg=true)](https://ci.appveyor.com/project/jaredsburrows/android-gradle-kotlin-app-template/branch/master)|[![Coveralls](https://coveralls.io/repos/github/jaredsburrows/android-gradle-kotlin-app-template/badge.svg?branch=master)](https://coveralls.io/github/jaredsburrows/android-gradle-kotlin-app-template?branch=master)|
+
 Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 
 ## Technologies used:
