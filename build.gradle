@@ -23,8 +23,8 @@ buildscript {
         // Code coverage
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3"
         // kotlin plugin
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.2"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:1.0.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.2-1"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:1.0.2-1"
     }
 }
 
@@ -109,16 +109,9 @@ coveralls {
     jacocoReportPath = "${buildDir}/reports/jacoco/jacocoDebugReport/jacocoDebugReport.xml"
 }
 
-// https://github.com/tbroyer/gradle-errorprone-plugin/issues/18
-configurations.all {
-    resolutionStrategy {
-        force "com.google.errorprone:error_prone_core:2.0.5"
-    }
-}
-
 dependencies {
     // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.2"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.2-1"
 
     // Android Support Library for AppCompat
     compile "com.android.support:appcompat-v7:24.0.0"
