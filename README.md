@@ -89,7 +89,7 @@ Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 License
 =========
 
-    Copyright (C) 2016 android-gradle-kotlin-app-template by Jared Burrows
+    Copyright (C) 2016 Android Gradle Kotlin App Template by Jared Burrows
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
