@@ -8,12 +8,12 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:2.1.2"
-        classpath "com.novoda:gradle-android-command-plugin:1.5.0"
+        classpath "com.novoda:gradle-android-command-plugin:1.6.0"
         classpath "com.github.triplet.gradle:play-publisher:1.1.4"
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.4"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.5"
         classpath "com.vanniktech:gradle-android-apk-size-plugin:0.2.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.2-1"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:1.0.2-1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.3"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:1.0.3"
     }
 }
 
@@ -21,7 +21,7 @@ plugins {
     id "com.gradle.build-scan" version "1.0"
     id "net.ltgt.errorprone" version "0.0.8"
     id "com.github.kt3k.coveralls" version "2.6.3"
-    id "com.github.ben-manes.versions" version "0.12.0"
+    id "com.github.ben-manes.versions" version "0.13.0"
     id "build-dashboard"
     id "pmd"
     id "jacoco"
@@ -92,24 +92,43 @@ android {
     }
 }
 
+configurations {
+    all {
+        resolutionStrategy {
+            force "com.google.errorprone:error_prone_core:2.0.9"
+        }
+    }
+}
+
 dependencies {
     // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.2-1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.3"
 
     // Android Support Library for AppCompat
     compile "com.android.support:appcompat-v7:24.0.0"
 
     // Espresso Instrumentation Testing
     androidTestCompile "com.android.support:support-annotations:24.0.0"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:2.2.2"
+    androidTestCompile "com.android.support.test:runner:0.5"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:2.2.2"
     androidTestCompile("com.android.support.test.espresso:espresso-contrib:2.2.2") {
-        exclude module: "appcompat-v7"
+        exclude module: "appcompat"
         exclude module: "support-v4"
+        exclude module: "support-v7"
+        exclude module: "design"
+        exclude module: "support-annotations"
         exclude module: "recyclerview-v7"
     }
 
+    // Junit
+    testCompile "junit:junit:4.12"
+
+    // Mockito
+    testCompile "org.mockito:mockito-core:2.0.86-beta"
+
     // Robolectric + Support v4
-    testCompile "org.robolectric:shadows-play-services:3.1"
-    testCompile "org.robolectric:shadows-support-v4:3.1"
+    testCompile "org.robolectric:shadows-support-v4:3.1.1"
     testCompile "org.khronos:opengl-api:gl1.1-android-2.1_r1"
 
     // AssertJ
