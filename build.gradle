@@ -105,10 +105,10 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.3"
 
     // Android Support Library for AppCompat
-    compile "com.android.support:appcompat-v7:24.0.0"
+    compile "com.android.support:appcompat-v7:24.1.0"
 
     // Espresso Instrumentation Testing
-    androidTestCompile "com.android.support:support-annotations:24.0.0"
+    androidTestCompile "com.android.support:support-annotations:24.1.0"
     androidTestCompile "com.android.support.test.espresso:espresso-core:2.2.2"
     androidTestCompile "com.android.support.test:runner:0.5"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:2.2.2"
@@ -125,13 +125,13 @@ dependencies {
     testCompile "junit:junit:4.12"
 
     // Mockito
-    testCompile "org.mockito:mockito-core:2.0.86-beta"
+    testCompile "org.mockito:mockito-core:2.0.87-beta"
 
     // Robolectric + Support v4
     testCompile "org.robolectric:shadows-support-v4:3.1.1"
     testCompile "org.khronos:opengl-api:gl1.1-android-2.1_r1"
 
     // AssertJ
-    testCompile "com.android.support:support-annotations:24.0.0"
+    testCompile "com.android.support:support-annotations:24.1.0"
     testCompile "com.squareup.assertj:assertj-android:1.1.1"    // 2/3.1.0 for java 8
 }
