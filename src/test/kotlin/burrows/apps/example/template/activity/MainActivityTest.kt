@@ -11,7 +11,6 @@ import org.robolectric.annotation.Config
 
 /**
  * @author <a href="mailto:jaredsburrows@gmail.com">Jared Burrows</a>
- * @since 0.0.1
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, sdk = intArrayOf(Build.VERSION_CODES.M))
