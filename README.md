@@ -28,7 +28,7 @@ Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 ####Testing Frameworks:
 |Name|Description|
 |---|---|
-| [Espresso](https://google.github.io/android-testing-support-library/) | Google's *New* Instrumentation Framework |
+| [Espresso](https://google.github.io/android-testing-support-library/) | Instrumentation Framework |
 | [Robolectric](https://github.com/robolectric/robolectric) | Unit Testing Framework |
 
 ####Reporting Plugins:
@@ -60,31 +60,64 @@ Gradle + Android Studio + Robolectric + Espresso + JaCoCo
   - Change the Build Variant Test Artifact to `Unit Tests`
   - Right click a unit test located in `src/main/test` and click test
 
-## Comand Line(Advanced):
-##### Clone with `Git`:
- - `git clone https://github.com/jaredsburrows/android-gradle-kotlin-app-template.git`
- - `cd AndroidGradleTemplate`
+## Building and Running
 
-##### Installing/Running with `Gradle`:
- - **Install the `debug flavor` on your Android Device:**
-   - `gradlew installDebug`
- - **Install and Run the `debug flavor` on your Android Device:**
-   - `gradlew runDebug`
 
-##### Running Instrumentation/Espresso Tests with `Gradle`:
- - **Run all instrumentation tests in all `flavors`:**
-   - `gradlew connectedAndroidTest`
- - **Run all instrumentation `debug flavor` tests:**
-   - `gradlew connectedDebugAndroidTest`
+This project builds with [Gradle](www.gradle.org) and the Android Build [tools](http://tools.android.com/tech-docs/new-build-system).
 
-##### Running Unit Tests with `Gradle`:
- - **Run all unit tests in all `flavors`:**
-   - `gradlew test`
- - **Run a single unit test in all `flavors`:**
-   - `gradlew test --tests="*MainActivityTest*"`
- - **Run all unit `debug flavor` tests:**
-   - `gradlew testDebug`
- - **Run a single unit test in the `debug flavor`:**
-   - `gradlew testDebug --tests="*MainActivityTest*"`
- - **Run a single unit test in the `debug flavor` with `Jacoco` test reports:**
-   - `gradlew testDebug --tests="*MainActivityTest*" jacocoDebugReport`
+
+**Build the APK:**
+
+    $ gradlew assembleDebug
+
+**Install the APK:**
+
+    $ gradlew installDebug
+
+**Run the App:**
+
+    $ gradlew runDebug
+
+## Testing
+
+
+**Running the Unit Tests:**
+
+
+The [Junit](http://junit.org/junit4/) and [Robolectric](https://github.com/robolectric/robolectric) tests run on the JVM, no need for emulators or real devices.
+
+
+    $ gradlew testDebug
+    
+**Run a single unit test in the `debug flavor`:**
+
+    $ gradlew testDebug --tests="*MainActivityTest*"
+
+    
+**Running the Instrumentation Tests:**
+
+
+The [Espresso](https://developer.android.com/training/testing/ui-testing/espresso-testing.html) instrumentation tests run on the device.
+
+    $ gradlew connectedDebugAndroidTest
+    
+
+## Reports
+
+
+**Generate Lint Reports:**
+
+
+The [Lint](http://developer.android.com/tools/help/lint.html) plugin generates reports based off the source code.
+
+
+    $ gradlew lintDebug
+
+
+**Generate Jacoco Test Coverage:**
+
+
+The [Jacoco](http://www.eclemma.org/jacoco/) plugin generates coverage reports based off the unit tests.
+
+
+    $ gradlew jacocoDebugReport
