@@ -7,10 +7,10 @@ buildscript {
         classpath "com.gradle:build-scan-plugin:1.4"
         classpath "com.android.tools.build:gradle:2.2.2"
         classpath "com.novoda:gradle-android-command-plugin:1.7.1"
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.1"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.2"
         classpath "com.vanniktech:gradle-android-apk-size-plugin:0.3.0"
         classpath "com.github.triplet.gradle:play-publisher:1.1.4"
-        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3"
+        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1"
         classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.8"
         classpath "com.github.ben-manes:gradle-versions-plugin:0.14.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.6"
@@ -116,10 +116,10 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.6"
 
     // Android Support Library for AppCompat
-    compile "com.android.support:appcompat-v7:25.0.0"
+    compile "com.android.support:appcompat-v7:25.2.0"
 
     // Espresso Instrumentation Testing
-    androidTestCompile "com.android.support:support-annotations:25.0.0"
+    androidTestCompile "com.android.support:support-annotations:25.2.0"
     androidTestCompile "com.android.support.test.espresso:espresso-core:2.2.2"
     androidTestCompile "com.android.support.test:runner:0.5"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:2.2.2"
@@ -136,13 +136,13 @@ dependencies {
     testCompile "junit:junit:4.12"
 
     // Mockito
-    testCompile "org.mockito:mockito-core:1.10.19"
+    testCompile "org.mockito:mockito-core:2.7.12"
 
     // Robolectric + Support v4
-    testCompile "org.robolectric:shadows-support-v4:3.1.2"
+    testCompile "org.robolectric:shadows-support-v4:3.2.2"
     testCompile "org.khronos:opengl-api:gl1.1-android-2.1_r1"
 
     // AssertJ
-    testCompile "com.android.support:support-annotations:25.0.0"
-    testCompile "com.squareup.assertj:assertj-android:1.1.1"    // 2/3.1.0 for java 8
+    testCompile "com.android.support:support-annotations:25.2.0"
+    testCompile "org.assertj:assertj-core:1.7.1"
 }

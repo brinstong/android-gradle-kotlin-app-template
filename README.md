@@ -28,7 +28,6 @@ Gradle + Android Studio + Robolectric + Espresso + JaCoCo
 |Name|Description|
 |---|---|
 | [Espresso](https://google.github.io/android-testing-support-library/) | Instrumentation Framework |
-| [Robolectric](https://github.com/robolectric/robolectric) | Unit Testing Framework |
 
 ####Reporting Plugins:
 |Name|Description|
@@ -83,7 +82,7 @@ This project builds with [Gradle](www.gradle.org) and the Android Build [tools](
 **Running the Unit Tests:**
 
 
-The [Junit](http://junit.org/junit4/) and [Robolectric](https://github.com/robolectric/robolectric) tests run on the JVM, no need for emulators or real devices.
+The [Junit](http://junit.org/junit4/) tests run on the JVM, no need for emulators or real devices.
 
 
     $ gradlew testDebug
