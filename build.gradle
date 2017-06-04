@@ -1,36 +1,37 @@
 buildscript {
+    rootProject.ext.ci = rootProject.hasProperty("ci")
+
     repositories {
         maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
-        classpath "com.gradle:build-scan-plugin:1.4"
-        classpath "com.android.tools.build:gradle:2.2.2"
+        classpath "com.gradle:build-scan-plugin:1.7.2"
+        classpath "com.android.tools.build:gradle:2.3.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.2-3" // Breaks with 1.1.2-4
         classpath "com.novoda:gradle-android-command-plugin:1.7.1"
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.2"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.4"
         classpath "com.vanniktech:gradle-android-apk-size-plugin:0.3.0"
-        classpath "com.github.triplet.gradle:play-publisher:1.1.4"
+        classpath "com.github.triplet.gradle:play-publisher:1.2.0"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1"
-        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.8"
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.14.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.6"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:1.0.6"
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.10"
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.15.0"
     }
 }
 
 repositories {
-    maven { url "https://plugins.gradle.org/m2/" }
+    jcenter()
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "3.4"
+    gradleVersion = "3.5"
     distributionType = Wrapper.DistributionType.ALL
 }
 
 apply from: rootProject.file("gradle/buildScan.gradle")
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
-apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
 apply plugin: "android-command"
 apply plugin: "com.getkeepsafe.dexcount"
 apply plugin: "com.vanniktech.android.apk.size"
@@ -42,7 +43,7 @@ apply from: rootProject.file("gradle/publishing.gradle")
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "burrows.apps.example.template"
@@ -50,8 +51,23 @@ android {
         versionName "1.0"
         minSdkVersion 16
         targetSdkVersion 25
-        // Espresso test runner
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfigs "en" // Keep only english resource files for now
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    dataBinding {
+        enabled = true
+        enabledForTests = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    dexOptions {
+        preDexLibraries !rootProject.ext.ci
     }
 
     // Shouldn"t the plugin be doing this for us?
@@ -80,15 +96,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-
-    dexOptions {
-        preDexLibraries !Boolean.valueOf(System.getenv("TRAVIS"))
-    }
-
     lintOptions {
         textOutput "stdout"
         checkAllWarnings true
@@ -102,24 +109,48 @@ android {
         disable "NewerVersionAvailable"
     }
 
-    testOptions.unitTests {
-        all {
-            jacoco {
-                includeNoLocationClasses = true
+    testOptions {
+        animationsDisabled = true
+
+        unitTests {
+            returnDefaultValues = true
+
+            all {
+                jacoco {
+                    includeNoLocationClasses = true
+                }
             }
         }
     }
+
+    packagingOptions {
+        exclude "**/*.txt"
+        exclude "**/*.xml"
+        exclude "**/*.properties"
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:25.3.1"
 }
 
 dependencies {
     // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.6"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.1.2-4"
 
     // Android Support Library for AppCompat
-    compile "com.android.support:appcompat-v7:25.2.0"
+    compile "com.android.support:appcompat-v7:25.3.1"
+    compile "com.google.dagger:dagger:2.11"
+
+    kapt "com.google.dagger:dagger-compiler:2.11"
+    kapt "com.android.databinding:compiler:2.3.2"
 
     // Espresso Instrumentation Testing
-    androidTestCompile "com.android.support:support-annotations:25.2.0"
+    androidTestCompile "com.android.support:support-annotations:25.3.1"
     androidTestCompile "com.android.support.test.espresso:espresso-core:2.2.2"
     androidTestCompile "com.android.support.test:runner:0.5"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:2.2.2"
@@ -136,13 +167,13 @@ dependencies {
     testCompile "junit:junit:4.12"
 
     // Mockito
-    testCompile "org.mockito:mockito-core:2.7.12"
+    testCompile "org.mockito:mockito-core:2.8.9"
 
     // Robolectric + Support v4
     testCompile "org.robolectric:shadows-support-v4:3.2.2"
     testCompile "org.khronos:opengl-api:gl1.1-android-2.1_r1"
 
     // AssertJ
-    testCompile "com.android.support:support-annotations:25.2.0"
+    testCompile "com.android.support:support-annotations:25.3.1"
     testCompile "org.assertj:assertj-core:1.7.1"
 }
